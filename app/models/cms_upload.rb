@@ -6,7 +6,7 @@ end
 # -- AR Extensions --------------------------------------------------------
   has_attached_file :file,
                     :url => '/common/:cms_upload_dir_label/:basename.:extension',
-                    :path => Rails.public_path + "/common/:cms_upload_dir_label/:basename.:extension"
+                    :path => Rails.public_path + "/" + LucyCms.config.cms_upload_directory + "/:cms_upload_dir_label/:basename.:extension"
   
   # -- Relationships --------------------------------------------------------
   belongs_to :cms_upload_dir
