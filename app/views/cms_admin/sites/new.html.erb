@@ -1,0 +1,6 @@
+<h1> Setup Site </h1>
+
+<%= cms_site_form_for @cms_site, :url => {:action => :create} do |form| %>
+  <%= render :partial => 'form', :object => form %>
+  <%= form.submit 'Setup Site' %>
+<% end %>

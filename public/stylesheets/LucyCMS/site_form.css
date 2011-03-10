@@ -1,0 +1,82 @@
+/* -- Forms -------------------------------------------------------------- */
+.site_form_element {
+  overflow: hidden;
+  margin-bottom: 5px;
+}
+.site_form_element .label {
+  width: 144px;
+  float: left;
+  text-align: right;
+  font: 13px/19px 'Lucida Grande', 'Tahoma', serif;
+  text-shadow: #fff 1px 1px;
+  padding: 0px 10px;
+  background-color: #f1f1f1;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px ;
+  -moz-border-radius-topleft: 3px;
+  -moz-border-radius-bottomleft: 3px;
+  border-right: 3px solid #bbb;
+}
+.site_form_element .value {
+  margin-left: 175px;
+}
+.site_form_element .value input[type='text'],
+.site_form_element .value input[type='password'],
+.site_form_element .value select,
+.site_form_element .value textarea {
+  border: 0px;
+  width: 100%;
+  padding: 2px 0px;
+  font-family: 'Courier New', Courier, monospace;
+}
+.site_form_element .value textarea {
+  height: 300px;
+}
+.site_form_element .value .CodeMirror-wrapping {
+  background-color: #fff;
+}
+.site_form_element.check_box_element input {
+  width: auto;
+}
+.site_form_element.cms_tag_field_datetime .label,
+.site_form_element.cms_tag_field_integer .label,
+.site_form_element.cms_tag_field_string .label,
+.site_form_element.cms_tag_field_text .label {
+  border-color: #48699C;
+}
+.site_form_element.cms_tag_page_datetime .label,
+.site_form_element.cms_tag_page_integer .label,
+.site_form_element.cms_tag_page_string .label,
+.site_form_element.cms_tag_page_text .label,
+.site_form_element.cms_tag_page_rich_text .label {
+  border-color: #3F7300;
+}
+.site_form_element.errors .label {
+  border-color: #9e0b0f;
+}
+.site_form_element.errors .errors {
+  margin: 2px 0px 0px 175px;
+  font-size: 11px;
+  color: #9e0b0f;
+}
+.site_form_element.submit_element {
+  margin-top: 10px;
+}
+.site_form_element.submit_element .value {
+  background-color: #f1f1f1;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  padding: 5px;
+}
+.site_form_element.submit_element label {
+  margin: 0px 5px;
+}
+.site_form_element .desc {
+  margin: 2px 0px 0px 175px;
+  font-size: 11px;
+  color: #777;
+  background-color: #fff;
+  padding: 5px;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+}

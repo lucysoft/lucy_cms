@@ -1,0 +1,12 @@
+<h1>Please Log in</h1>
+<%= form_tag cms_admin_session_path do %>
+      <div class='form_element text_field_element '>
+        <div class='label'><label for="cms_user_name">Username</label></div>
+        <div class='value'><input id="login" name="login" size="30" type="text" /></div>
+      </div>
+      <div class='form_element password_field_element '>
+        <div class='label'><label for="cms_user_name">Password</label></div>
+        <div class='value'><input id="password" name="password" size="30" type="password" /></div>
+      </div>
+  <div><%= submit_tag 'Login' %></div>
+<% end %>

@@ -1,0 +1,16 @@
+<% cms_user ||= index_branch %>
+
+<li id='cms_user_<%= cms_user.id %>'>
+  <div class='item'>
+    <div class='icon'></div>
+    <div class='action_links'>
+      <%= link_to 'Edit', edit_cms_admin_user_path(cms_user) %>
+    </div>
+    <div class='label'>
+      <%= link_to cms_user.last_name + ', ' + cms_user.first_name, edit_cms_admin_user_path(cms_user) %>
+      <div class='sublabel'>
+        <%= cms_user.login %>
+      </div>
+    </div>
+  </div>
+</li>

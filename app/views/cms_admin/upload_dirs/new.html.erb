@@ -1,0 +1,6 @@
+<h1> New Directory </h1>
+
+<%= cms_form_for @cms_upload_dir, :url => {:action => :create} do |form| %>
+  <%= render :partial => 'form', :object => form %>
+  <%= form.submit 'Create Directory' %>
+<% end %>

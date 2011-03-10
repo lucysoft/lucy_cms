@@ -1,0 +1,9 @@
+<%= form.text_field :login%>
+<%= form.text_field :first_name%>
+<%= form.text_field :last_name%>
+<% unless @cms_site.authentication == 'LDAP' %>
+  <%= form.password_field :password %>
+  <%= form.password_field :password_confirmation %>
+<% end %>
+<%= form.check_box :admin%>
+<%= form.check_box :disabled%>

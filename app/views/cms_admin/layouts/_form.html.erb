@@ -1,0 +1,10 @@
+<%= form.hidden_field :cms_user_id, :value => @cms_current_user.id %>
+<%= form.text_field :label, :label => 'Layout Name', :id => (@cms_layout.new_record?? 'slugify' : nil)%>
+<%= form.text_field :slug, :id => 'slug' %>
+<% if (options = CmsLayout.options_for_select(@cms_site, @cms_layout)).present? %>
+  <%= form.select :parent_id, [['---- Select Parent Layout ----', nil]] + options %>
+<% end %>
+
+<%= form.text_area :content, :class => 'code' %>
+<%= form.text_area :css, :class => 'code_css' %>
+<%= form.text_area :js, :class => 'code_js' %>

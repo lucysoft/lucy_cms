@@ -1,0 +1,16 @@
+<%= form.hidden_field :version,  :value => LucyCms.config.version %>
+<%= form.text_field :label, :label => 'Title'%>
+<%= form.text_field :hostname, :label => 'Hostname<br>(www.example.com)' %>
+<div class='form_element radio_button_element '>
+  <div class='site_label'><label for="cms_site_authentication">Authentication</label></div>
+  <div class='site_value'>
+     <input id="cms_site_authentication_internal_database" name="cms_site[authentication]" type="radio" value="Internal" <%if @cms_site.authentication != 'ldap'%>checked<%end%> onclick="$('#ldap_fields').hide();" > Internal Database
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     <input id="auth_ldap" name="cms_site[authentication]" type="radio" value="LDAP" <%if @cms_site.authentication == 'LDAP'%>checked<%end%> onclick="$('#ldap_fields').show();"> LDAP
+  </div>        
+</div>
+<div id = "ldap_fields" <%if @cms_site.authentication != 'LDAP'%> style = "display:none;"<%end%>>        
+  <%= form.text_field :ldap_hostname, :label => 'LDAP Hostname<br>(ldap.example.com)' %>
+  <%= form.text_field :ldap_base_DN, :label => 'LDAP Base DN<br>(dc=example,dc=com)' %>
+  <%= form.text_field :ldap_uid, :label => 'LDAP User Id Attribute<br>(uid)' %>
+</div>

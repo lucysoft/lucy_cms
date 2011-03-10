@@ -1,0 +1,26 @@
+<div id='file_uploads' class='box'>
+  <div class='actions'>
+    <a id='uploader_button' href='#' class='big button'>Upload Files</a>
+  </div>
+</div>
+<h1>Directory: /<%=LucyCms.config.cms_upload_directory%>/<%=@cms_upload_dir.label%></h1>
+
+<ul class='list' id = 'uploaded_files'>
+  <% @cms_uploads.each do |cms_upload| %>
+    <li id='cms_upload_<%= cms_upload.id %>'>
+      <div class='item'> 
+        <div class='icon'></div>
+        <div class='action_links'>
+          <%= link_to 'Delete', uploads_destroy_cms_admin_upload_dir_path(cms_upload), :method => :delete, :remote => true, :confirm => 'Are you sure?' %>
+        </div>
+        <div class='label'>
+          <%= link_to cms_upload.file_file_name, cms_upload.file.url, :target => '_blank', :class => 'filename' %>
+          <div class='sublabel'>
+            <br>
+            <div style='float:right'>Last updated by: <%=cms_upload.cms_user.full_name %> on <%=cms_upload.updated_at.strftime("%m/%d/%Y at %I:%M %p %Z") %></div>
+          </div>
+        </div>
+      </div>
+    </li>
+  <% end %>
+</ul>

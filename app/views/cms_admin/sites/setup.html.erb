@@ -1,0 +1,16 @@
+<h1>Setup</h1>
+<table border = 0 cellspacing=0 cellpadding=0>
+  <tr><td><b>Title:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><%= @cms_site.label %></td></tr>
+  <tr><td>&nbsp;</td></tr>
+  <tr><td><b>Hostname:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><%= @cms_site.hostname %></td></tr>
+  <tr><td>&nbsp;</td></tr>
+  <tr><td><b>Authentication:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><%= @cms_site.authentication %></td></tr>
+  <tr><td>&nbsp;</td></tr>
+  <% if @cms_site.authentication == 'LDAP' %>
+    <tr><td><b>LDAP Hostname:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><%= @cms_site.ldap_hostname %></td></tr>
+    <tr><td>&nbsp;</td></tr>
+    <tr><td><b>LDAP Base DN:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><%= @cms_site.ldap_base_DN %></td></tr>
+    <tr><td>&nbsp;</td></tr>
+    <tr><td><b>LDAP User ID Attibute:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><%= @cms_site.ldap_uid %></td></tr>
+  <% end %>
+</table>

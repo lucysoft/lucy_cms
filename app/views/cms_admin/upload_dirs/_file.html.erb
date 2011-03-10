@@ -1,0 +1,15 @@
+<li id='<%= dom_id(file) %>'>
+  <div class='item'>
+    <div class='icon'></div>
+    <div class='action_links'>
+      <%= link_to 'Delete', uploads_destroy_cms_admin_upload_dir_path(file), :method => :delete, :remote => true, :confirm => 'Are you sure?' %>
+    </div>
+    <div class='label'>
+      <%= link_to file.file_file_name, file.file.url, :target => '_blank', :class => 'filename' %>
+      <div class='sublabel'>
+        <br>
+        <div style='float:right'>Last updated by: <%=file.cms_user.full_name %> on <%=file.updated_at.strftime("%m/%d/%Y at %I:%M %p %Z") %></div>
+      </div>
+    </div>
+  </div>
+</div>

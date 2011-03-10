@@ -1,0 +1,17 @@
+<h1> Editing User </h1>
+
+  <%= cms_form_for @cms_user, :url => {:action => :update} do |form| %>
+  <%= form.text_field :login%>
+  <%= form.text_field :first_name%>
+  <%= form.text_field :last_name%>
+  <%= form.check_box :admin%>
+  <%= form.check_box :disabled%>
+  <%= form.submit 'Update User' %>
+<% end %>
+<% unless @cms_site.authentication == 'LDAP' %>
+    <div class='form_element submit_element'>
+      <div class='value'>
+        <%= button_to 'Change Password', change_password_cms_admin_user_path, :method => 'get', :class => 'big button' %>
+      </div>
+    </div>
+<% end %>

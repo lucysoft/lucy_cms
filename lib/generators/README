@@ -1,0 +1,5 @@
+Hey! Everything is almost done. Please don't forget to
+  
+  * run migrations -> `rake db:migrate`
+  
+After that go to http://your-awesome-app/cms-admin to start populating content.

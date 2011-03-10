@@ -1,0 +1,12 @@
+<h1>Houston we have a problem</h1>
+
+<%= LucyCms.config.cms_title %> uses a directory named <b><%= LucyCms.config.cms_upload_directory %></b> to put all uploaded content in.  This directory is located in <b><%=Rails.public_path%></b>.<br>
+<br>
+Unfortunatly there is already a file named <b><%= LucyCms.config.cms_upload_directory %></b> in this directory.<br>
+<br>
+This problem can be fixed in two ways:<br>
+<br>
+1. Delete or rename this file.<br>
+2. Edit the setting <i>config.cms_upload_directory</i> in the <b>lucy_cms.rb</b> file located in the <b>config/initializers/</b> directory to use a directory name that is not already in use.<br>
+<br>
+Sorry for the inconvenience

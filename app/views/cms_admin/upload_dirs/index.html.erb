@@ -1,0 +1,23 @@
+<%= link_to span_tag('Create New Directory'), new_cms_admin_upload_dir_path, :class => 'big button' %>
+<h1>Upload Directories</h1>
+<b>Base Directory: /<%=LucyCms.config.cms_upload_directory%></b><br>
+<br>
+<ul class='list'>
+  <% @cms_upload_dirs.each do |cms_upload_dir| %>
+    <li id='cms_upload_dir_<%= cms_upload_dir.id %>'>
+      <div class='item'>
+        <div class='icon'></div>
+        <div class='action_links'>
+          <%= link_to 'Delete', cms_admin_upload_dir_path(cms_upload_dir), :method => :delete, :confirm => 'Are you sure?' %>
+        </div>
+        <div class='label'>
+          <%= link_to cms_upload_dir.label, cms_admin_upload_dir_path(cms_upload_dir) %>
+          <div class='sublabel'>
+            <br>
+            <div style='float:right'>Created by: <%=cms_upload_dir.cms_user.full_name%> on <%=cms_upload_dir.updated_at.strftime("%m/%d/%Y at %I:%M %p %Z") %></div>
+          </div>
+        </div>
+      </div>
+    </li>
+  <% end %>
+</ul>
