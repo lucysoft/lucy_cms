@@ -24,7 +24,7 @@ class LucyCms::Configuration
   
   # Configuration defaults
   def initialize
-    @version              = '0.0.4'
+    @version              = '0.0.5'
     @admin_route_prefix   = 'cms-admin'
     @admin_route_redirect = "/#{@admin_route_prefix}/pages"
     @seed_data_path       = nil
