@@ -1,6 +1,7 @@
 class CmsAdmin::UploadDirsController < CmsAdmin::BaseController
   
   before_filter :check_and_set_base_dir, :except => :conflict
+  skip_before_filter :cms_login_required, :only => :uploads_destroy
 
   def index
     return redirect_to :action => :new if @cms_site.cms_upload_dirs.count == 0
@@ -47,10 +48,9 @@ class CmsAdmin::UploadDirsController < CmsAdmin::BaseController
   end
   
   def uploads_destroy
-    @cms_upload = CmsUpload.find( params[:id])
+    @cms_upload = CmsUpload.find(params[:id])
     @cms_upload.destroy
   end
-
 
   def destroy
     @cms_upload_dir = @cms_site.cms_upload_dirs.find(params[:id])

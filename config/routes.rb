@@ -31,7 +31,7 @@ Rails.application.routes.draw do
       end
       member do
         post :uploads
-        delete :uploads_destroy
+        post :uploads_destroy
       end
     end
   end

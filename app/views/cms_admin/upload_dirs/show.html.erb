@@ -11,7 +11,7 @@
       <div class='item'> 
         <div class='icon'></div>
         <div class='action_links'>
-          <%= link_to 'Delete', uploads_destroy_cms_admin_upload_dir_path(cms_upload), :method => :delete, :remote => true, :confirm => 'Are you sure?' %>
+          <%= link_to 'Delete', uploads_destroy_cms_admin_upload_dir_path(cms_upload), :method => :post, :remote => true, :confirm => 'Are you sure?' %>
         </div>
         <div class='label'>
           <%= link_to cms_upload.file_file_name, cms_upload.file.url, :target => '_blank', :class => 'filename' %>
