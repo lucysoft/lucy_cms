@@ -28,14 +28,14 @@ module LucyCms
     
     # Modify CMS configuration
     # Example:
-    #   ComfortableMexicanSofa.configure do |config|
-    #     config.cms_title = 'Comfortable Mexican Sofa'
+    #   LucyCMS.configure do |config|
+    #     config.config.cms_upload_directory = 'shared'
     #   end
     def configure
       yield configuration
     end
     
-    # Accessor for ComfortableMexicanSofa::Configuration
+    # Accessor for LucyCMS::Configuration
     def configuration
       @configuration ||= Configuration.new
     end

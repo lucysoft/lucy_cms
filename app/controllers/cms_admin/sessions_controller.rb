@@ -7,7 +7,7 @@ class CmsAdmin::SessionsController < CmsAdmin::BaseController
   end
 
   def create
-    @cms_current_user = CmsUser.authenticate(params[:login], params[:password])
+    @cms_current_user = CmsUser.authenticate(params[:login], params[:password], @cms_site.authentication, @cms_site.ldap_hostname, @cms_site.ldap_base_DN, @cms_site.ldap_uid)
     if @cms_current_user
       session[:cms_user_id] = @cms_current_user.id
       redirect_to cms_admin_pages_path

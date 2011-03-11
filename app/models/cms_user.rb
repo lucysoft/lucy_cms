@@ -1,3 +1,4 @@
+require 'net/ldap'
 class CmsUser < ActiveRecord::Base
 
   validates :login,
@@ -10,16 +11,8 @@ class CmsUser < ActiveRecord::Base
   validates :last_name,
     :presence   => true
 
-  @cms_site = CmsSite.first
-  
-  unless @cms_site.nil?
-  if @cms_site.authentication != 'LDAP'
     attr_accessor :password_confirmation
     validates_confirmation_of :password
-
-    validates :password,
-      :presence => true,
-      :on       =>  :create
 
     # 'password' is a virtual attribute
     def password
@@ -32,24 +25,22 @@ class CmsUser < ActiveRecord::Base
       create_new_salt
       self.hashed_password = CmsUser.encrypted_password(self.password, self.salt)
     end
-  end
-  end
  
   def full_name
     [first_name, last_name].join(' ')
   end
 
-  def self.authenticate(login, password)
+  def self.authenticate(login, password, authentication, ldap_hostname, ldap_base_DN, ldap_uid)
 
-    if @cms_site.authentication == 'LDAP'
+    if authentication == 'LDAP'
       username = login
 
       if (password.empty?) then
         return nil
       end
 
-      ldap = Net::LDAP.new(:host => @cms_site.ldap_hostname, :base => @cms_site.ldap_base_DN)
-      filter = Net::LDAP::Filter.eq(@cms_site.ldap_uid, login)
+      ldap = Net::LDAP.new(:host => ldap_hostname, :base => ldap_base_DN)
+      filter = Net::LDAP::Filter.eq(ldap_uid, login)
       ldap.search(:filter => filter) {|entry| login = entry.dn}
       ldap.auth(login, password)
 
@@ -76,7 +67,6 @@ class CmsUser < ActiveRecord::Base
       user
     end
 
-rescue Net::LDAP::LdapError
   end
  
   private

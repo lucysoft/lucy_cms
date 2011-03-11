@@ -37,6 +37,7 @@ class CmsAdmin::SitesController < CmsAdmin::BaseController
     if @cms_site.authentication != 'LDAP'
       @cms_site.ldap_hostname = ''
       @cms_site.ldap_base_DN = ''
+      @cms_site.ldap_uid = ''
     end
     if @cms_site.save
       flash[:notice] = 'Site updated'

@@ -16,7 +16,7 @@ module LucyCms::ViewHooks
   
   # Will declare a partial that will be rendered for this hook
   # Example:
-  # ComfortableMexicanSofa::ViewHooks.add(:navigation, 'shared/navigation')
+  # LucyCMS::ViewHooks.add(:navigation, 'shared/navigation')
   def self.add(name, partial_path)
     self.hooks[name.to_sym] ||= []
     self.hooks[name.to_sym] << partial_path

@@ -3,11 +3,8 @@ class CmsAdmin::BaseController < ActionController::Base
   protect_from_forgery
   
     before_filter :fetch_cms_logged_in_user,
-                  :load_admin_cms_site
-  
-  unless CmsSite.count == 0 || CmsUser.find(:all, :conditions => {:admin => true, :disabled => false}).count == 0
-    before_filter :cms_login_required
-  end
+                  :load_admin_cms_site,
+    	          :cms_login_required
   layout 'cms_admin'
     
 protected
@@ -16,13 +13,13 @@ protected
    if CmsSite.count == 0
       flash[:error] = 'To start you must setup your site'
       redirect_to new_cms_admin_site_path
-    else
+   else
       @cms_site = CmsSite.first
       if @cms_site.version <  LucyCms.config.version
         @cms_site.version = LucyCms.config.version
         @cms_site.save
       end
-    end
+   end
   end
   
   def fetch_cms_logged_in_user
@@ -38,6 +35,7 @@ protected
   
   def cms_login_required
     return true if cms_logged_in?
+    return true if CmsSite.count == 0 || CmsUser.find(:all, :conditions => {:admin => true, :disabled => false}).count == 0
     redirect_to new_cms_admin_session_path and return false
   end 
 end

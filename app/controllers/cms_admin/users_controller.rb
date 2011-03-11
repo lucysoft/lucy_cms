@@ -25,6 +25,12 @@ class CmsAdmin::UsersController < CmsAdmin::BaseController
         render :action => 'new'
         return
       end
+    else
+      if @cms_user.password.nil? || @cms_user.password.empty?
+        flash[:error] = 'Password can not be blank'
+        render :action => 'new'
+        return
+      end
     end
     if CmsUser.find_by_admin_and_disabled(true,false).nil? 
       if @cms_user.admin == false || @cms_user.disabled == true
@@ -67,6 +73,12 @@ class CmsAdmin::UsersController < CmsAdmin::BaseController
       if username == @cms_user.login
         flash[:error] = "Username not in LDAP"
         render :action => 'edit'
+        return
+      end
+    else
+      if @cms_user.password.nil? || @cms_user.password.empty?
+        flash[:error] = 'Password can not be blank'
+        render :action => 'new'
         return
       end
     end
