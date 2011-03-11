@@ -52,8 +52,9 @@ class CmsAdmin::UploadDirsController < CmsAdmin::BaseController
   
   def uploads_destroy
     @cms_upload = CmsUpload.find(params[:id])
+    @cms_upload_dir = @cms_upload.cms_upload_dir
     @cms_upload.destroy
-    redirect_to :action => :show
+    redirect_to :action => :show, :id => @cms_upload_dir.id
   end
 
   def destroy
