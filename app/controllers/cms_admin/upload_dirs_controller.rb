@@ -1,7 +1,6 @@
 class CmsAdmin::UploadDirsController < CmsAdmin::BaseController
   
   before_filter :check_and_set_base_dir, :except => :conflict
-  skip_before_filter :cms_login_required, :only => :uploads_destroy
 
   def index
     return redirect_to :action => :new if @cms_site.cms_upload_dirs.count == 0
@@ -36,12 +35,16 @@ class CmsAdmin::UploadDirsController < CmsAdmin::BaseController
   end
 
   def uploads
+    tempfile = params[:file].tempfile.path
     @cms_upload_dir = @cms_site.cms_upload_dirs.find(params[:id])
     @cms_upload_check = @cms_upload_dir.cms_uploads.find_by_cms_upload_dir_id_and_file_file_name( params[:id], params[:file].original_filename)
     unless @cms_upload_check.nil?
       @cms_upload_check.destroy
     end
     @cms_upload = @cms_upload_dir.cms_uploads.create!(:file => params[:file], :cms_upload_dir_label => @cms_upload_dir.label, :cms_user_id => @cms_current_user.id)
+    if File::exists?(tempfile)
+      File::delete(tempfile)
+    end
     render :partial => 'file', :object => @cms_upload
   rescue ActiveRecord::RecordInvalid
     render :nothing => true, :status => :bad_request
@@ -50,6 +53,7 @@ class CmsAdmin::UploadDirsController < CmsAdmin::BaseController
   def uploads_destroy
     @cms_upload = CmsUpload.find(params[:id])
     @cms_upload.destroy
+    redirect_to :action => :show
   end
 
   def destroy
