@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{lucy_cms}
-  s.version = "0.0.4"
+  s.version = "0.0.6"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Lucy"]
-  s.date = %q{2011-03-09}
+  s.date = %q{2011-03-11}
   s.description = %q{}
   s.email = %q{lucy@lucysoft.com}
   s.extra_rdoc_files = [
@@ -69,7 +69,6 @@ Gem::Specification.new do |s|
     "app/views/cms_admin/upload_dirs/index.html.erb",
     "app/views/cms_admin/upload_dirs/new.html.erb",
     "app/views/cms_admin/upload_dirs/show.html.erb",
-    "app/views/cms_admin/upload_dirs/uploads_destroy.js.erb",
     "app/views/cms_admin/users/_form.html.erb",
     "app/views/cms_admin/users/_index_branch.html.erb",
     "app/views/cms_admin/users/change_password.html.erb",
